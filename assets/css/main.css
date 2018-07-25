@@ -25,7 +25,7 @@ div.card > :first-child {
 }
 
 .bg-nw, .card.card-dark {
-    background-color: #514689;
+    background-color: /*#514689;*/ #a76d34;
 }
 .card.card-dark {
     color: #ede6f8;
