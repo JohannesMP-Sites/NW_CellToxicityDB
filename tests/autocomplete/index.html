@@ -122,13 +122,19 @@
                             }
 
                             .eac-item .mi-arm-marker {
+                                display: inline-block;
                                 position:relative;
                                 top: 3px;
-                                width: 2rem;
-                                height: 1rem;
-                                border-radius: .25rem;
-                                display: inline-block;
+                                width: 2.1rem;
+                                height: 1.1rem;
+
+                                margin-top: -5px;
                                 margin-right: 0.5rem;
+
+                                border-radius: .25rem;
+                                border: #42375d solid 2px;
+                                border-left-width: 5px;
+                                border-right-width: 5px;
                             }
 
                             .eac-item .mi-arm-marker.mi-arm-dom {
@@ -139,11 +145,22 @@
                             }
                             
                             .eac-item .mi-arm-marker.mi-arm-less {
-                                background-color: #c8c3d4; 
+                                background-color: #c8c3d4;
+                                border-color: #ada5c2;
                             }
                             .eac-item .mi-arm-marker.mi-arm-less:hover {
                                 background-color: #9188a9;
+                                border-color: #7a728e;
                             }
+
+                            .eac-item .mi-arm-marker.mi-arm-drosha {
+                                border-color: #efc74f !important;
+                            }
+
+                            .eac-item .mi-arm-marker.mi-arm-mirtron {
+                                border-color: #4196d8 !important;
+                            }
+
 
                             .eac-item .hsa-prefix {
                                 opacity: 0.5;
@@ -172,8 +189,11 @@
                                     template: {
                                             type: "custom",
                                             method: function(value, item) {
-                                                let dom = item.dominant ? "mi-arm-dom" : "mi-arm-less"
-                                                let marker = '<div class="mi-arm-marker ' + dom + '"></div>';
+                                                let dom = item.dom ? " mi-arm-dom" : " mi-arm-less";
+                                                let drosha = item.drosha ? " mi-arm-drosha" : "";
+                                                let mirtron = item.mirtron ? " mi-arm-mirtron" : "";
+                                                let classes = "mi-arm-marker" + dom + drosha + mirtron;
+                                                let marker = '<div class="' + classes + '"></div>';
                                                 return marker + '<span class="hsa-prefix">hsa-</span>' + value;
                                             }
                                         },
