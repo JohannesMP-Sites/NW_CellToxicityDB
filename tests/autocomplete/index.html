@@ -78,6 +78,14 @@
             <div class="card">
                 <div class="card-header">
                     <div class="form-row">
+                        <div class="col-md-auto">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <label for="data-seed-field" class="input-group-text" disabled>Seed</label>
+                                </div>
+                                <input type="text" id="data-seed-field" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Nucleotides" disabled>
+                            </div>
+                        </div>
 
                         <div class="col">
                             <div class="input-group">
@@ -90,6 +98,18 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-auto">
+                            <div class="form-row">
+                                <div class="col-auto">
+                                    <button id="reset-button" class="btn btn-danger" disabled>Reset</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button id="save-button" class="btn btn-success" aria-describedby="save-button-help" disabled><i class="fas fa-download"></i><span class="d-xs-inline d-sm-none d-lg-inline"> Download CSV</span></button>
+                                </div>
+                            </div>
+                        </div>
+
                         <style>
                             .input-group .form-control.autocomplete-field-wrapper {
                                 padding: 0;
@@ -101,22 +121,27 @@
                                 width: 100%;
                             }
 
-                            .eac-item .mi-arm.mi-arm-dom {
-                                background-color: #6c5c91; 
-                                color: white;
-                                font-weight: normal;
+                            .eac-item .mi-arm-marker {
+                                position:relative;
+                                top: 3px;
+                                width: 2rem;
+                                height: 1rem;
+                                border-radius: .25rem;
+                                display: inline-block;
+                                margin-right: 0.5rem;
                             }
-                            .eac-item .mi-arm.mi-arm-dom:hover {
-                                color: white;
+
+                            .eac-item .mi-arm-marker.mi-arm-dom {
+                                background-color: #6c5c91; 
+                            }
+                            .eac-item .mi-arm-marker.mi-arm-dom:hover {
                                 background-color: #382e50; 
                             }
                             
-                            .eac-item .mi-arm.mi-arm.less {
-                                color: #62577d;
+                            .eac-item .mi-arm-marker.mi-arm-less {
                                 background-color: #c8c3d4; 
                             }
-                            .eac-item .mi-arm.mi-arm.less:hover {
-                                color: #171321;
+                            .eac-item .mi-arm-marker.mi-arm-less:hover {
                                 background-color: #9188a9;
                             }
 
@@ -140,8 +165,8 @@
                                             type: "custom",
                                             method: function(value, item) {
                                                 let dom = item.dominant ? "mi-arm-dom" : "mi-arm-less"
-                                                let wrap = '<div class="mi-arm ' + dom + '">';
-                                                return wrap + value + '</div>';
+                                                let marker = '<div class="mi-arm-marker ' + dom + '"></div>';
+                                                return marker + value;
                                             }
                                         },
 
@@ -150,7 +175,7 @@
                                         match: {
                                             enabled: true
                                         },
-                                        maxNumberOfElements: 20,
+                                        maxNumberOfElements: 30,
                                     },
                                 };
 
@@ -164,6 +189,7 @@
                 </div>
 
                 <div class="card-body">
+                    <i>Filtered Table would appear here...</i>
                     <br />
                 </div>
 
@@ -177,8 +203,8 @@
                 <div class="card-header"></div>
                 <div class="card-body">
                     <h5 class="card-title">Info</h5>
-                    <p>Type in the search field. It will auto-complete to show matching miRNAs.<p>
-                    <p></p>
+                    <p>Type in the <b>miRNAs</b> search field. It will auto-complete to show matching miRNAs.<p>
+                    <p>Note that the other search elements are only there as placeholder, and are not functional here.</p>
                 </div>
 
                 <div class="card-footer"></div>
