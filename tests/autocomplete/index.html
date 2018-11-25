@@ -145,6 +145,11 @@
                                 background-color: #9188a9;
                             }
 
+                            .eac-item .hsa-prefix {
+                                opacity: 0.5;
+                                font-style: italic;
+                            }
+
                         </style>
 
                         <script type="text/javascript">
@@ -155,10 +160,13 @@
 
                             $(function() {
 
+
+
                                 var options = {
                                     url: "tests/autocomplete/miRNAs.json",
+
                                     getValue: function(element) {
-                                            return element.mi_rna;
+                                            return element.mi_rna.replace("hsa-", "")
                                         },
 
                                     template: {
@@ -166,7 +174,7 @@
                                             method: function(value, item) {
                                                 let dom = item.dominant ? "mi-arm-dom" : "mi-arm-less"
                                                 let marker = '<div class="mi-arm-marker ' + dom + '"></div>';
-                                                return marker + value;
+                                                return marker + '<span class="hsa-prefix">hsa-</span>' + value;
                                             }
                                         },
 
