@@ -2,6 +2,11 @@ p {
     margin-bottom: 0.75rem;
 }
 
+#version-title {
+    font-size: 80%;
+    opacity: 0.75;
+}
+
 #header-box {
     color: #ede6f8;
     background-color: rgba(0,0,0,0.5);
@@ -9,7 +14,26 @@ p {
     margin-bottom: 1rem;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
+    position:relative;
 }
+
+.anchor-link {
+    cursor: pointer;
+}
+
+#header-help {
+    opacity: 0.4;
+    transition: opacity 0.2s;
+    position: absolute;
+    top: 2.8rem;
+    right: 1rem;
+    font-size: 1.5rem;
+}
+
+#header-help:hover {
+    opacity: 1;
+}
+
 
 .card {
     margin-bottom: 20px;
@@ -25,7 +49,7 @@ div.card > :first-child {
 }
 
 .bg-nw, .card.card-dark {
-    background-color: /*#514689;*/ #a76d34;
+    background-color: #514689;
 }
 .card.card-dark {
     color: #ede6f8;
@@ -308,7 +332,7 @@ td {
 
 tr .mi-rna {
     position:relative;
-    top: 0px;
+    top: -1px;
     padding: 0 0 0.1rem 0.7rem;
     margin-bottom: 0.1rem;
     line-height: 1.25rem;
@@ -324,27 +348,110 @@ tr .mi-rna .mi-arm {
     background-color: #6c5c91; 
     color: white;
     font-weight: normal;
-    border: #42375d solid 1px;
+    border: #ada5c2 solid 2.5px;
 }
 .mi-arm:hover { 
-    background-color: #382e50; 
+    background-color: #382e50;
+    border-color: #7a728e; 
 }
 .mi-arm.mi-arm-less { 
     color: #62577d;
     background-color: #c8c3d4; 
-    border-color: #ada5c2;
 }
 .mi-arm.mi-arm-less:hover { 
     color: #171321;
     background-color: #9188a9;
-    border-color: #7a728e;
 }
 
+.mi-arm.mi-arm-drosha {
+    border-color: #efc74f;
+}
+.mi-arm-mi-arm-drosha:hover {
+    border-color: #d89029;
+}
+
+.mi-arm.mi-arm-mirtron {
+    border-color: #4196d8;
+}
+.mi-arm.mi-arm-mirtron:hover {
+    border-color: #1a74ba;
+}
+
+
+/* Autocomplete search bar */
+.input-group .form-control.autocomplete-field-wrapper {
+    padding: 0;
+}
+.input-group input.wrapped-autocomplete-field {
+    position: relative;
+    padding: .375rem .75rem;
+    border: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: rgba(1,1,1,0);
+}
+.input-group input.wrapped-autocomplete-field:disabled, 
+.input-group input.wrapped-autocomplete-field[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.easy-autocomplete-container ul {
+    max-height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.easy-autocomplete-container ul li, 
+.easy-autocomplete-container ul .eac-category {
+    font-size: inherit;
+    padding: 3px 10px;
+}
+
+.easy-autocomplete-container .mi-arm-marker {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    width: 2.2rem;
+    height: 1.2rem;
+    margin-top: -5px;
+    margin-right: 0.5rem;
+    border-radius: .25rem;
+}
+
+.mi-arm-marker .mi-arm {
+    border-width: 2.1px;
+}
+
+.eac-item .hsa-prefix {
+    opacity: 0.4;
+    font-style: italic;
+}
+
+
+/*.mi-arm.mi-arm-drosha {
+    background-color: #c19e66;
+    border-color: #82644a;
+}
+.mi-arm.mi-arm-drosha:hover {
+    background-color: #503f2e;
+}
+.mi-arm.mi-arm-less.mi-arm-drosha {
+    color: #7c7656;
+    background-color: #d4ccc3;
+    border-color: #c2b3a5;
+}
+.mi-arm.mi-arm-less.mi-arm-drosha:hover {
+    color: #211c13;
+    background-color: #a89d87;
+    border-color: #8e8372;
+}*/
+
 .red-badge {
-      background-color: rgb(255,127,127);
-      border-color: rgb(235, 107, 107);
-      color: black;
-      font-weight: normal;
+    background-color: rgb(255,127,127);
+    border-color: rgb(235, 107, 107);
+    color: black;
+    font-weight: normal;
 }
 .red-badge:hover{
     background-color: rgb(215, 87, 87);
@@ -389,7 +496,7 @@ tr:hover td {
 
 }
 
-/* Search highlighting */
+/* Table Search highlighting */
 table.dataTable .seq-rna span.highlight {
     background-color: #e9d8ff;
     border-radius: 0.3rem;
@@ -442,3 +549,19 @@ table.dataTable {
     .col-fixed { width: 350px; }
     .col-fluid { width: calc(100% - 350px);}
 }
+
+ul#version-history {
+    list-style-type: none;
+    padding: 0;
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.version-tag {
+    background-color: #c8c3d4;
+}
+.version-tag:hover {
+    background-color: #ffffff;
+}
+
+

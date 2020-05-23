@@ -1,102 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="urf-8">
-    <meta name="viewport" content="width=520, initial-scale=0.60">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="urf-8">
+  <meta name="viewport" content="width=520, initial-scale=0.60">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>(BETA) 6mer Seed Toxicity</title>
+  <title>6mer Seed Toxicity</title>
 
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/apple-touch-icon-precomposed.png">
-    <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
 
-    <!-- JQuery -->
-    <script src="assets/vendor/jquery-3.3.1/jquery.min.js"></script>
-    <!-- JQuery Highlight -->
-    <script src="assets/vendor/jquery-highlight/jquery.highlight.min.js"></script>
+  <!-- JQuery -->
+  <script src="assets/vendor/jquery-3.3.1/jquery.min.js"></script>
+  <!-- JQuery Highlight -->
+  <script src="assets/vendor/jquery-highlight/jquery.highlight.min.js"></script>
 
-    <!-- Async -->
-    <script src="assets/vendor/async-2.6.0/async.min.js"></script>
+  <!-- Easy Autocomplete-->
+  <script src="assets/vendor/easyautocomplete-1.3.5/jquery.easy-autocomplete.js"></script>
+  <link rel="stylesheet" href="assets/vendor/easyautocomplete-1.3.5/easy-autocomplete.css">
 
-    <!-- D3.js -->
-    <script src="assets/vendor/d3-4.13.0/d3.min.js"></script>
+  <!-- Async -->
+  <script src="assets/vendor/async-2.6.0/async.min.js"></script>
 
-    <!-- BlobJS - FileSaverJS dependency -->
-    <script src="assets/vendor/blobjs/blob.js"></script>
-    <!-- FileSaverJS - More support for older browsers -->
-    <script src="assets/vendor/filesaverjs-1.3.5/filesaver.js"></script>
+  <!-- D3.js -->
+  <script src="assets/vendor/d3-4.13.0/d3.min.js"></script>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap-4.0.0/css/bootstrap.min.css">
-    <script src="assets/vendor/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+  <!-- BlobJS - FileSaverJS dependency -->
+  <script src="assets/vendor/blobjs/blob.js"></script>
+  <!-- FileSaverJS - More support for older browsers -->
+  <script src="assets/vendor/filesaverjs-1.3.5/filesaver.js"></script>
 
-    <!-- Bootstrap Toggle -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap-toggle-2.2.2/css/bootstrap-toggle.min.css">
-    <script src="assets/vendor/bootstrap-toggle-2.2.2/js/bootstrap-toggle.min.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap-4.0.0/css/bootstrap.min.css">
+  <script src="assets/vendor/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- DataTables -->
-    <link rel="stylesheet" href="assets/vendor/datatables-1.10.16/css/datatables.min.css">
-    <script src="assets/vendor/datatables-1.10.16/js/datatables.min.js"></script>
+  <!-- Bootstrap Toggle -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap-toggle-2.2.2/css/bootstrap-toggle.min.css">
+  <script src="assets/vendor/bootstrap-toggle-2.2.2/js/bootstrap-toggle.min.js"></script>
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="assets/vendor/fontawesome-free-5.0.8/css/fontawesome-all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="assets/vendor/datatables-1.10.16/css/datatables.min.css">
+  <script src="assets/vendor/datatables-1.10.16/js/datatables.min.js"></script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="assets/vendor/fontawesome-free-5.0.8/css/fontawesome-all.min.css">
 
 
-    <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/beta.css">
 
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115418404-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-115418404-1');
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115418404-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-115418404-1');
+  </script>
 
 </head>
-
 <body class="bg-nw">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
     <div class="row">
-        <div class="col">
-            <div id="header-box">
-                <h2>(BETA) 6mer Seed Toxicity</h2>
-                <p>A tool to determine the toxicity of any siRNA, shRNA or miRNA with known 6mer seed sequence.</p>
-            </div>
+      <div class="col">
+        <div id="header-box">
+          <h2>6mer Seed Toxicity <span id="version-title"></span></h2>
+          <p>A tool to determine the toxicity of any siRNA, shRNA or miRNA with known 6mer seed sequence</p>
+          <a id="header-help" class="anchor-link"><i class="fa fa-question-circle float-right" aria-hidden="true"></i></a>
+
         </div>
+      </div>
     </div>
 
     <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <br />
-                </div>
-                <div class="card-body">
-                    <h2 class="card-title">Beta tests:</h2>
-                    <ul>
-                        <li><a href="/tests/autocomplete">Autocomplete</a></li>
-                    </ul>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <div id="data-search-box" class="form-row ">
+              
+              <div class="col">
+                <div class="form-row">
+                  <div class="col-md-auto">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <label for="data-seed-field" class="input-group-text">Seed</label>
+                      </div>
+                      <input type="text"
+                        id="data-seed-field" class="form-control"
+                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" 
+                        placeholder="Nucleotides" disabled>
+                    </div>
+                  </div>
 
+                  <div class="col">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <label for="data-mirna-field" class="input-group-text">miRNA hsa-</label>
+                      </div>
+                      <!-- wrap to maintain form-control style, since field will get wrapped by autocomplete plugin-->
+                      <div class="form-control autocomplete-field-wrapper">
+                        <input type="text" id="data-mirna-field" class="wrapped-autocomplete-field form-control"
+                          autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" 
+                          placeholder="mature miRNA or accession number" disabled>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="col-sm-auto">
+                <div class="form-row">
+                  <div class="col-auto">
+                    <button id="reset-button" class="btn btn-danger" disabled>Reset</button>
+                  </div>
+                  <div class="col-auto">
+                    <button id="save-button" class="btn btn-success" aria-describedby="save-button-help" disabled><i class="fas fa-download"></i><span class="d-xs-inline d-sm-none d-lg-inline"> Download CSV</span></button>
+                  </div>
+                </div>
+              </div>
+
             </div>
-        </div>
-    </div>
+          </div>
+
+          <div id="table-box" class="card-body">
+
+            <div id="loading-display" class="my-5 py-5 text-center">
+              <h5>Data is loading...</h5>
+              <h1><i id="loader"class="fas fa-circle-notch"></i></h1>
+            </div>
+            <table id="data-table" class="display table-striped dataTables searchHighlight mode-rna" width="100%" data-page-length='100'></table>
+          </div>
+        </div> <!-- #table.card -->
+      </div>
+    </div> <!-- .row -->
+
+    <br>
 
     <div class="row">
         <div class="col">
             <div class="card card-dark">
-                <div class="card-header"></div>
+                <div class="card-header" id="how-to-use"><h3>How to use</h3></div>
                 <div class="card-body">
-                    <h5 class="card-title">Info</h5>
-                </div>
-                
-                <div class="card-footer"></div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h5 class="card-title">Search 6mers</h5>
+                            <a target="_blank" href="assets/img/seed_search.png"><img src="assets/img/seed_search.png" class="img-fluid rounded"/></a>
+                            <p>Enter one of 4096 possible 6mers into the search field or any nucleotide sequence of less than 7 nucleotides.</p>
+                            <p>Use positions 2-7 of the guide/antisense strand of the RNA duplex as the 6mer.</p>
+                            <br class="d-block d-md-none">
+                        </div>
+
+                        <div class="col-sm">
+                            <h5 class="card-title">Search miRNAs</h5>
+                            <a target="_blank" href="assets/img/mirna_search.png"><img src="assets/img/mirna_search.png" class="img-fluid rounded"/></a>
+                            <p>Type in the <b>miRNA</b> search field. It will auto-complete to show matching mature miRNAs. You can also use the miRNA accession number.</p>
+                            <p>Each miRNA is color-coded. The colors are explained in the <a id="info-link" class="anchor-link">Info</a> section below.</p>
+                            <br class="d-block d-md-none">
+                        </div>
+
+                        <div class="col-sm">
+                            <h5 class="card-title">miRBase links</h5>
+                            <a target="_blank" href="assets/img/show_mirnas.png"><img src="assets/img/show_mirnas.png" class="img-fluid rounded"/></a>
+                            <p>With <b>show miRNAs</b> enabled, you can click on a mature miRNA in the results to be taken to the <a href=http://mirbase.org target="_blank">mirbase.org</a> page corresponding to its accession number.
+                            <br class="d-block d-md-none">
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <div class="card card-dark">
+          <div class="card-header" id="info"><h3>Info</h3></div>
+          <div class="card-body">
+            <p>This site allows to determine the activity of any siRNA, shRNA, or miRNA to be toxic through its 6mer seed sequence in human (<i>HeyA8 - ovarian</i> and <i>H460 - lung</i>) and mouse (<i>M565 - liver and 3LL - lung</i>) cancer cell lines.</p>
+
+            <p>The viability columns of the data table are colored as follows:</p>
+            <ul>
+                <li>miRNAs with low viability (high toxicity, <div class="badge badget-light red-badge">red color</div>) will likely be tumor suppressive.</li>
+                <li>miRNAs with high viability (low toxicity, <div class="badge badget-light green-badge">green color</div>) can be tumor promoting.</li>
+            </ul>
+
+            <p>When <b>show miRNAs</b> is enabled, miRNAs are color-coded as follows:</p>
+            <ul>
+                <li>Mature miRNAs representing the predominant arm are shown in <div class="badge badge-light mi-arm mi-arm-dom">dark purple</div>.</li>
+                <li>Mature miRNAs representing the lesser expressed arm (the * activity) are shown in <div class="badge badge-light mi-arm mi-arm-less">light purple</div>.</li>
+
+                <li>miRNAs that are highly expressed and processed by Drosha (RISC bound in wild-type but not Drosha k.o. HCT116 cells)  have a <div class="badge badge-light mi-arm mi-arm-dom mi-arm-drosha">yellow</div> <div class="badge badge-light mi-arm mi-arm-less mi-arm-drosha">outline</div>.
+
+                    <ul>
+                        <li>All other miRNAs are either not processed by Drosha (i.e. miR-320a), miRtrons, or not significantly expressed in HCT116 cells.</li>
+                    </ul>
+                </li>
+
+                <li>miRtrons have a <div class="badge badge-light mi-arm mi-arm-dom mi-arm-mirtron">blue</div> <div class="badge badge-light mi-arm mi-arm-less mi-arm-mirtron">outline</div> .</li>
+            </ul>
+
+            <hr>
+
+            <h5 class="card-title">References</h5>
+            <p>Gao, Q.Q., Putzbach, W.E., Murmann, A.E., Chen, S., Sarshad, A.A., Peter, J.M., Bartom, E.T., Hafner, M. and Peter, M.E. (2018) 6mer seed toxicity in tumor suppressive microRNAs. Nature Comm, 9:4504. </p>
+            
+            <hr>
+            <h5 class="card-title">Version History</h5>
+            <p><i>Click for detailed changelogs.</i></p>
+            <div id="version-placeholder"><em>Loading...</em></div>
+            <div id="version-template" style="display:none">
+                <li class="version-entry">
+                   <a class="version-url" href="">
+                       <div class="badge badge-light version-tag">
+                           <span class="version-number">VERSION</span> | 
+                           <span class="version-date">DATE</span>
+                       </div> 
+                       <span class="version-name">RELEASE NAME</span>
+                   </a>
+               </li>
+            </div>
+
+            <ul id="version-history">
+            </ul>
+
+            <hr style="clear:both">
+            <h5 class="card-title">Acknowledgements</h5>
+            <p>This site was developed by <a href="http://www.johannesmp.com" target="_blank">Johannes Peter</a>.</p>
+            <p>The source code is available on <a href="https://github.com/JohannesMP/NW_CellToxicityDB" target="_blank">Github</a> under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a>.</p>
+          </div>
+          <div class="card-footer"></div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- .container-fluid -->
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/versionHistory.js"></script>
+
+  <script src="assets/js/htmlHelpers.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/filters.js"></script>
+  <script src="assets/js/render.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
